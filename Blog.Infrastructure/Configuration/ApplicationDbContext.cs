@@ -4,7 +4,7 @@ using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace Blog.Web.Data
+namespace Blog.Infrastructure.Configuration
 {
     public class ApplicationDbContext : IdentityDbContext
     {
