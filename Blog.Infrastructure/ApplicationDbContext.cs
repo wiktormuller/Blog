@@ -19,6 +19,8 @@ namespace Blog.Infrastructure
         {
             base.OnModelCreating(builder);
             builder.ApplyConfiguration(new PostConfiguration());
+            builder.ApplyConfiguration(new CommentConfiguration());
+            builder.ApplyConfiguration(new CategoryConfiguration());
         }
 
         //ENTITIES
