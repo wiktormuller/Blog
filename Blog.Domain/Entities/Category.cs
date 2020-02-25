@@ -8,7 +8,6 @@ namespace Blog.Domain.Entities
     {
         public int CategoryId { get; private set; }
         public string Name { get; private set; }
-        public DateTime Created { get; private set; }
 
         public Post Post { get; private set; }
     }
