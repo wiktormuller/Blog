@@ -13,6 +13,9 @@ using Microsoft.EntityFrameworkCore;
 using Blog.Infrastructure;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Blog.Domain.Interfaces;
+using Blog.Infrastructure.Services;
+using AutoMapper;
 
 namespace Blog.Web
 {
@@ -41,6 +44,11 @@ namespace Blog.Web
             services.AddDefaultIdentity<IdentityUser>()
                 .AddDefaultUI(UIFramework.Bootstrap4)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            services.AddScoped<IPost, PostService>();
+
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            //?services.AddControllersWithViews();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

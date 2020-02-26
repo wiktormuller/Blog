@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Blog.Domain.Entities;
 using Blog.Domain.Interfaces;
@@ -23,10 +24,10 @@ namespace Blog.Infrastructure.Services
         public Post Get(int id)
         {
             var post = _context.Posts.Where(p => p.PostId == id).First();
-            return post;    //Try do not return a domain entities directly forward. Use a DTO Classes
+            return post;
         }
 
-        public IQueryable<Post> GetAll()
+        public IEnumerable<Post> GetAll()
         {
             var posts = _context.Posts
                 .Include(post => post.Author)
