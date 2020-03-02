@@ -3,9 +3,10 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Blog.Web</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+    <title>@ViewData["Title"] - Blog</title>
 
-    <environment include="Development">
+    <!--<environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
     </environment>
     <environment exclude="Development">
@@ -13,12 +14,40 @@
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
               crossorigin="anonymous"
-              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"/>
+              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" />
     </environment>
-    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/site.css" />-->
+    <link rel="stylesheet" href="~/css/style.css" />
 </head>
 <body>
-    <header>
+    <nav class="main-nav">
+        <a href="#" class="logo">
+            <img src="./img/logo.png">
+        </a>
+        <ul class="main-menu">
+            <li>
+                <a href="#">Home</a>
+            </li>
+            <li>
+                <a href="#">Categories</a>
+            </li>
+            <li>
+                <a href="#">Features</a>
+            </li>
+        </ul>
+        <div class="search-area">
+            <form class="search">
+                <button class="search-btn" type="submit"><i class="fas fa-search"></i></button>
+                <input class="search-input" type="text" placeholder="Type of search">
+            </form>
+        </div>
+        <div class="menu-btn">
+            <i class="fas fa-bars fa-2x"></i>
+        </div>
+    </nav>
+    <header class="picture"></header>
+    @RenderBody()
+    <!--<header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Blog.Web</a>
@@ -72,6 +101,7 @@
         </script>
     </environment>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    -->
 
     @RenderSection("Scripts", required: false)
 </body>

@@ -7,6 +7,8 @@
   <ItemGroup>
     <Compile Remove="Migrations\20200220210231_InitialCreate.cs" />
     <Compile Remove="Migrations\20200220210231_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20200302195337_AddPostImageEentity.cs" />
+    <Compile Remove="Migrations\20200302195337_AddPostImageEentity.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

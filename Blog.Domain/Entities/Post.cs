@@ -10,6 +10,7 @@ namespace Blog.Domain.Entities
         public int PostId { get; private set; }
         public string Title { get; private set; }
         public string Content { get; private set; }
+        public byte[] Image { get; set; }
         public DateTime Created { get; private set; }
         public bool IsActive { get; private set; }
         
