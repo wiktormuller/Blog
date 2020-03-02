@@ -32,7 +32,7 @@ namespace Blog.Web.Controllers
             return View(model);
         }
 
-        public IActionResult Privacy()
+        public IActionResult Privacy()  //DO NOT FORGET TO IMPLEMENT
         {
             return View();
         }

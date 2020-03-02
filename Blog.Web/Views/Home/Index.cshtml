@@ -4,6 +4,8 @@
 
 @model IEnumerable<Blog.Infrastructure.DTO.PostDto>
 
+
+<header class="picture"></header>
 <div class="container">
     <section class="home-cards">
 
@@ -13,7 +15,7 @@
                 <div class="card-image">
                     <img src="~/img/card1.png">
                 </div>
-                <h3 class="card-title"><a class="title-navigator" href="#">@post.Title</a></h3>
+                <h3 class="card-title"><a asp-controller="Post" asp-action="Index" asp-route-id="@post.PostId" class="title-navigator">@post.Title</a></h3>
                 <ul>
                     <li>
                         <a href="#"><i class="fas fa-heart"></i>57</a>
@@ -31,49 +33,3 @@
     </section>
     <a href="#" class="load-more">LOAD MORE</a>
 </div>
-<footer class="footer">
-    <div class="footer-inner">
-        <div class="footer-column">
-            <h4 class="footer-title">Bona</h4>
-            <p class="footer-paragraph">
-                Bona @@ 2017. "&"copy All Right reserved.
-            </p>
-            <p class="footer-paragraph">
-                Designed by Colorlib.
-            </p>
-            <ul class="social-media">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-vimeo-v"></i></a>
-                <a href="#"><i class="fab fa-pinterest-p"></i></a>
-            </ul>
-        </div>
-        <div class="footer-column">
-            <h4 class="footer-title">CATEGORIES</h4>
-            <ul class="footer-list">
-                <li><a href="#">C SHARP</a></li>
-                <li><a href="#">.NET CORE</a></li>
-                <li><a href="#">ROSLYN</a></li>
-            </ul>
-            <ul class="footer-list">
-                <li><a href="#">BOOKS</a></li>
-                <li><a href="#">VS STUDIO</a></li>
-                <li><a href="#">OOP</a></li>
-            </ul>
-        </div>
-        <div class="footer-column">
-            <h4 class="footer-title">SUBSCRIBE</h4>
-            <div class="subscribe-area">
-                <form class="subscribe-form">
-                    <input class="subscribe-input" type="text" placeholder="Enter your email">
-                    <button class="subscribe-btn" type="submit"><i class="far fa-envelope"></i></button>
-                </form>
-            </div>
-        </div>
-    </div>
-</footer>
-
-<script>
-		document.querySelector('.menu-btn').addEventListener('click', () => document.querySelector('.main-menu').classList.toggle('show'))
-</script>

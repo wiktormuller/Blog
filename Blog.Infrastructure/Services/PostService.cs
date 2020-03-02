@@ -27,12 +27,13 @@ namespace Blog.Infrastructure.Services
             return post;
         }
 
-        public IEnumerable<Post> GetAll()
+        public IQueryable<Post> GetAll()
         {
             var posts = _context.Posts
                 .Include(post => post.Author)
                 .Include(post => post.Comments)
-                .Include(post => post.Categories);
+                .Include(post => post.Categories)
+                .Include(post => post.Image);
 
             return posts;
         }

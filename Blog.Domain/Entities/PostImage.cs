@@ -6,7 +6,7 @@ namespace Blog.Domain.Entities
 {
     public class PostImage
     {
-        public int PostId { get; set; }
+        public int PostImageId { get; set; }
         public byte[] Image { get; set; }
     }
 }

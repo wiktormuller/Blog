@@ -8,7 +8,7 @@ namespace Blog.Domain.Interfaces
     public interface IPost
     {
         Post Get(int id);
-        IEnumerable<Post> GetAll();
+        IQueryable<Post> GetAll();
         Task Add(Post post);
         Task Update(Post post);
         Task Remove(int id);

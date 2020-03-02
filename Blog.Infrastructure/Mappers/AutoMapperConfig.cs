@@ -10,6 +10,7 @@ namespace Blog.Infrastructure.Mappers
         public AutoMapperConfig()
         {
             CreateMap<Post, PostDto>();
+            CreateMap<Post, PostDetailsDto>();
         }
     }
 }
