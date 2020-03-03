@@ -6,35 +6,29 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Blog.Infrastructure.Services
 {
-    public class PostService : IPost
+    public class CategoryService : ICategory
     {
         private readonly ApplicationDbContext _context;
-
-        public PostService(ApplicationDbContext context)
+        public CategoryService(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        public Task Add(Post post)
+        public Task Add(Category category)
         {
             throw new System.NotImplementedException();
         }
 
         public Post Get(int id)
         {
-            var post = _context.Posts.Where(p => p.PostId == id).First();
-            return post;
+            throw new System.NotImplementedException();
         }
 
-        public IQueryable<Post> GetAll()
+        public IQueryable<Category> GetAll()
         {
-            var posts = _context.Posts
-                .Include(post => post.Author)
-                .Include(post => post.Comments)
-                .Include(post => post.Categories)
-                .Include(post => post.Image);
-
-            return posts;
+            var categories = _context.Categories
+                .Include(c => c.Post);
+            return categories;
         }
 
         public Task Remove(int id)
@@ -42,7 +36,7 @@ namespace Blog.Infrastructure.Services
             throw new System.NotImplementedException();
         }
 
-        public Task Update(Post post)
+        public Task Update(Category category)
         {
             throw new System.NotImplementedException();
         }
