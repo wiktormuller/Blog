@@ -16,6 +16,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Blog.Domain.Interfaces;
 using Blog.Infrastructure.Services;
 using AutoMapper;
+using Blog.Domain.Entities;
 
 namespace Blog.Web
 {
@@ -41,12 +42,14 @@ namespace Blog.Web
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>()
+
+            services.AddDefaultIdentity<ApplicationUser>()
                 .AddDefaultUI(UIFramework.Bootstrap4)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddScoped<IPost, PostService>();
             services.AddScoped<ICategory, CategoryService>();
+            services.AddScoped<IApplicationUser, ApplicationUserService>();
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             //?services.AddControllersWithViews();

@@ -374,6 +374,25 @@ button
 	margin: 5px;
 }
 
+.main-login
+{
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    padding: 40px;
+}
+
+.main-login li 
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    margin: 10px;
+    background: #08C3F8;
+}
+
 @media(max-width: 1300px)
 {
 	.home-cards

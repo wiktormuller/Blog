@@ -7,7 +7,7 @@ namespace Blog.Domain.Interfaces
 {
     public interface IApplicationUser
     {
-        ApplicationUser Get(int id);
+        ApplicationUser Get(string id);
         IQueryable<ApplicationUser> GetAll();
 
         Task SetProfileImage(int id, Uri uri);

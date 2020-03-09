@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Blog.Infrastructure.Services
 {
-    class ApplicationUserService : IApplicationUser
+    public class ApplicationUserService : IApplicationUser
     {
         private readonly ApplicationDbContext _context;
 
@@ -17,7 +17,7 @@ namespace Blog.Infrastructure.Services
             _context = context;
         }
 
-        public ApplicationUser Get(int id)
+        public ApplicationUser Get(string id)
         {
             return _context.ApplicationUsers.FirstOrDefault(user => user.Id == id);
         }

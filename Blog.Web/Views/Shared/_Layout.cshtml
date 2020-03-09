@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@using  Microsoft.AspNetCore.Identity
+@using  Blog.Domain.Entities
+@inject UserManager<ApplicationUser> UserManager
+@inject SignInManager<ApplicationUser> SignInManager
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -81,7 +86,7 @@
     </footer>
 
     <script>
-		document.querySelector('.menu-btn').addEventListener('click', () => document.querySelector('.main-menu').classList.toggle('show'))
+        document.querySelector('.menu-btn').addEventListener('click', () => document.querySelector('.main-menu').classList.toggle('show'))
     </script>
 
     @RenderSection("Scripts", required: false)

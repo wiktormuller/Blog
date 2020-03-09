@@ -21,6 +21,8 @@ namespace Blog.Infrastructure
             builder.ApplyConfiguration(new PostConfiguration());
             builder.ApplyConfiguration(new CommentConfiguration());
             builder.ApplyConfiguration(new CategoryConfiguration());
+
+            //builder.Seed();
         }
 
         //ENTITIES

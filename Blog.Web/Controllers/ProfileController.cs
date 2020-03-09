@@ -24,5 +24,10 @@ namespace Blog.Web.Controllers
 
             return View(model);
         }
+
+        public IActionResult Login()
+        {
+            return View("_LoginPartial");
+        }
     }
 }
