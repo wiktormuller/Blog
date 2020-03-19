@@ -164,7 +164,7 @@ button
 	justify-content: center;
 	width: 100%;
 	max-width: 1140px;
-    min-height: 100vh;
+    min-height: 800px;
 	margin: auto;
 }
 
@@ -374,7 +374,63 @@ button
 	margin: 5px;
 }
 
-.main-login
+/*GLOBAL FORM VIEW*/
+.form-group
+{
+	display: flex;
+	flex-direction: column;
+	width: 400px;
+	padding-top: 20px;
+}
+
+input.form-control
+{
+	height: 35px;
+	border-radius: 3px;
+	text-decoration: none;
+	border: 1px solid #CED4DA;
+}
+
+/*BUTTON IN FORM*/
+button.btn-form {
+	padding: 15px;
+	margin-top: 10px;
+	width: 100%;
+	background-color: #0069D9;
+	color: #ffffff;
+	font-size: 18px;
+}
+
+	button.form:hover
+	{
+		background-color: #0059C9;
+	}
+
+/*HYPERLINKS IN FORM*/
+.form-group a
+{
+	color: #0069d9;
+}
+
+/*CATEGORY SECTION*/
+.category-name
+{
+	padding: 5px;
+}
+
+.category-name a
+{
+	padding: 5px;
+	color: #0069d9;
+	font-weight: 500;
+}
+
+	.category-name a:hover {
+		padding: 5px;
+		color: #318aeb
+	}
+
+/*.main-login
 {
     width: 300px;
     display: flex;
@@ -391,7 +447,7 @@ button
     padding: 10px;
     margin: 10px;
     background: #08C3F8;
-}
+}*/
 
 @media(max-width: 1300px)
 {

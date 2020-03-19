@@ -1,10 +1,19 @@
 ﻿@model Blog.Infrastructure.DTO.CreateCategoryDto
+@{
+    ViewData["Title"] = "Category";
+}
 
-<p>Create New Category</p>
-
-<form asp-action="AddCategory" asp-controller="Category" method="post" enctype="multipart/form-data">
-    <label asp-for="Name">Category Name</label>
-    <input asp-for="Name" placeholder="Choose category name" />
-
-    <button type="submit">Create Category</button>
-</form>
+<div class="container">
+    <section>
+        <h1>@ViewData["Title"]</h1>
+        <form asp-action="AddCategory" asp-controller="Category" method="post" enctype="multipart/form-data">
+            <h4>Create a new category.</h4>
+            <hr />
+            <div class="form-group">
+                <label asp-for="Name">Category Name</label>
+                <input asp-for="Name" placeholder="Choose category name" class="form-control" />
+            </div>
+            <button class="btn-form" type="submit">Create Category</button>
+        </form>
+    </section>
+</div>

@@ -1,8 +1,19 @@
 ﻿@model IEnumerable<Blog.Infrastructure.DTO.CategoryDto>
-
-@foreach(var category in Model)
-{
-    <div>
-        <p>Category name: @category.Name</p>
-    </div>
+@{
+    ViewData["Title"] = "";
 }
+
+<div class="container">
+    <h1>List of categories</h1>
+    <section>
+        <h4>Category name:
+        </h4>
+        <hr />
+        @foreach (var category in Model)
+        {
+            <div class="category-name">
+                <a href="#">@category.Name</a>
+            </div>
+        }
+    </section>
+</div>

@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Blog.Domain.Entities;
 using Blog.Domain.Interfaces;
@@ -27,7 +28,7 @@ namespace Blog.Infrastructure.Services
             return post;
         }
 
-        public IQueryable<Post> GetAll()
+        public IEnumerable<Post> GetAll()
         {
             var posts = _context.Posts
                 .Include(post => post.Author)

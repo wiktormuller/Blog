@@ -6,7 +6,5 @@ namespace Blog.Infrastructure.DTO
     {
         public int CategoryId { get; private set; }
         public string Name { get; private set; }
-
-        public Post Post { get; private set; }
     }
 }
