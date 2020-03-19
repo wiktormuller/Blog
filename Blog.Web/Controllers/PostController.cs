@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
 using AutoMapper;
+using Blog.Domain.Entities;
 using Blog.Domain.Interfaces;
 using Blog.Infrastructure.DTO;
 using Blog.Web.Models;
@@ -23,7 +24,7 @@ namespace Blog.Web.Controllers
         public IActionResult Index()
         {
             var posts = _postService.GetAll();
-            var model = _mapper.Map<IEnumerable<PostDto>>(posts);
+            var model = _mapper.Map<IEnumerable<PostDto>>(posts);   //error mapping types
             
             return View("AllPosts", model);
         }
@@ -35,6 +36,22 @@ namespace Blog.Web.Controllers
             var model = _mapper.Map<PostDetailsDto>(post);
 
             return View(model);
+        }
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            var model = new CreatePostDto();
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult AddPost(CreatePostDto model)
+        {
+            var post = _mapper.Map<Post>(model);    //is it correct?
+            _postService.Add(post);
+
+            return RedirectToAction("Index", "Post");
         }
 
         public IActionResult Privacy()  //DO NOT FORGET TO IMPLEMENT

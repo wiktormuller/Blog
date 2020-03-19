@@ -13,6 +13,7 @@ namespace Blog.Infrastructure.Mappers
             CreateMap<Post, PostDetailsDto>();
             CreateMap<Category, CategoryDto>();
             CreateMap<ApplicationUser, ProfileDto>();
+            CreateMap<CreatePostDto, Post>();   //is it correct in post method?
         }
     }
 }

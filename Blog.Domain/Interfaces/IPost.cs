@@ -9,7 +9,7 @@ namespace Blog.Domain.Interfaces
     {
         Post Get(int id);
         IQueryable<Post> GetAll();
-        Task Add(Post post);
+        void Add(Post post); //make it as a task
         Task Update(Post post);
         Task Remove(int id);
     }

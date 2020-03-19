@@ -15,9 +15,10 @@ namespace Blog.Infrastructure.Services
             _context = context;
         }
 
-        public Task Add(Post post)
+        public void Add(Post post)
         {
-            throw new System.NotImplementedException();
+            _context.Add(post);
+            _context.SaveChanges();
         }
 
         public Post Get(int id)
@@ -32,7 +33,8 @@ namespace Blog.Infrastructure.Services
                 .Include(post => post.Author)
                 .Include(post => post.Comments)
                 .Include(post => post.Categories)
-                .Include(post => post.Image);
+                .Include(post => post.Image)
+                .OrderByDescending(post => post.Created);
 
             return posts;
         }

@@ -20,7 +20,7 @@ namespace Blog.Domain.Entities
         public int PostId { get; private set; }
         public string Title { get; private set; }
         public string Content { get; private set; }
-        public DateTime Created { get; private set; }
+        public DateTime Created { get; private set; } = DateTime.Now;
         public bool IsActive { get; private set; }
         
         public ApplicationUser Author { get; private set; }
