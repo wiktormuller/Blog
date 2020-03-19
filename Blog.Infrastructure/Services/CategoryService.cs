@@ -14,9 +14,10 @@ namespace Blog.Infrastructure.Services
             _context = context;
         }
 
-        public Task Add(Category category)
+        public void Add(Category category)
         {
-            throw new System.NotImplementedException();
+            _context.Add(category);
+            _context.SaveChanges();
         }
 
         public Post Get(int id)
@@ -26,8 +27,7 @@ namespace Blog.Infrastructure.Services
 
         public IQueryable<Category> GetAll()
         {
-            var categories = _context.Categories
-                .Include(c => c.Post);
+            var categories = _context.Categories;
             return categories;
         }
 

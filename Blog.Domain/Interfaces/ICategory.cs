@@ -8,7 +8,7 @@ namespace Blog.Domain.Interfaces
     {
         Post Get(int id);
         IQueryable<Category> GetAll();
-        Task Add(Category category);
+        void Add(Category category);
         Task Update(Category category);
         Task Remove(int id);
     }

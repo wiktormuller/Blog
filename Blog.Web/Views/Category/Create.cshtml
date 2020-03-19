@@ -1,0 +1,10 @@
+﻿@model Blog.Infrastructure.DTO.CreateCategoryDto
+
+<p>Create New Category</p>
+
+<form asp-action="AddCategory" asp-controller="Category" method="post" enctype="multipart/form-data">
+    <label asp-for="Name">Category Name</label>
+    <input asp-for="Name" placeholder="Choose category name" />
+
+    <button type="submit">Create Category</button>
+</form>

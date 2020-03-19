@@ -39,9 +39,8 @@ namespace Blog.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult Create()
+        public IActionResult Create(CreatePostDto model)
         {
-            var model = new CreatePostDto();
             return View(model);
         }
 
