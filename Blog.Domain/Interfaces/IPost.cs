@@ -10,7 +10,7 @@ namespace Blog.Domain.Interfaces
         Post Get(int id);
         IEnumerable<Post> GetAll();
         void Add(Post post); //make it as a task
-        Task Update(Post post);
-        Task Remove(int id);
+        void Update(Post post);
+        void Remove(int id);
     }
 }

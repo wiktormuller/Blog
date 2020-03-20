@@ -53,6 +53,32 @@ namespace Blog.Web.Controllers
             return RedirectToAction("Index", "Post");
         }
 
+        [HttpGet]
+        public IActionResult Update(int id)
+        {
+            var post = _postService.Get(id);
+            var model = _mapper.Map<UpdatePostDto>(post);
+            if(model == null)
+            {
+                return NotFound();
+            }
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult ChangePost(UpdatePostDto updatedPost)
+        {
+            var model = _mapper.Map<Post>(updatedPost);
+            if (model == null)
+            {
+                return NotFound();
+            }
+            _postService.Update(model);
+
+            return RedirectToAction("Index", "Post", new { id = model.PostId }); 
+        }
+
         public IActionResult Privacy()  //DO NOT FORGET TO IMPLEMENT
         {
             return View();

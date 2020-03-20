@@ -7,5 +7,6 @@
             <p>@Model.Content</p>
             <br />
             <p>Created at: @Model.Created by: @Model.Author</p>
+            <a asp-action="Update" asp-controller="Post" asp-route-id="@Model.PostId">Edit</a>
     </div>
 }

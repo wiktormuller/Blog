@@ -40,14 +40,17 @@ namespace Blog.Infrastructure.Services
             return posts;
         }
 
-        public Task Remove(int id)
+        public void Remove(int id)
         {
-            throw new System.NotImplementedException();
+            var post = Get(id);
+            _context.Posts.Remove(post);
+            _context.SaveChanges();
         }
 
-        public Task Update(Post post)
+        public void Update(Post post)
         {
-            throw new System.NotImplementedException();
+            _context.Posts.Update(post);
+            _context.SaveChanges();
         }
     }
 }

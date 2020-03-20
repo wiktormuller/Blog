@@ -1,0 +1,26 @@
+﻿@model Blog.Infrastructure.DTO.UpdatePostDto
+@{
+    ViewData["Title"] = "Update";
+}
+
+<div class="container">
+    <section>
+        <h1>@ViewData["Title"]</h1>
+        <form asp-action="ChangePost" asp-controller="Post" method="post">
+            <div class="form-group">
+                <label asp-for="Title">Post Title</label>
+                <input asp-for="Title" placeholder="Choose post title" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Content">Post Content</label>
+                <input asp-for="Content" placeholder="Write something interesting" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="IsActive">Is that post active?</label>
+                <input type="checkbox" asp-for="IsActive" checked />
+            </div>
+            <input type="hidden" asp-for="PostId" />
+            <button class="btn-form" type="submit">Save</button>
+        </form>
+    </section>
+</div>
