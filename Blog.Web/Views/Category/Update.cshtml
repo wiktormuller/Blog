@@ -1,0 +1,18 @@
+﻿@model Blog.Infrastructure.DTO.UpdateCategoryDto
+@{
+    ViewData["Title"] = "Update";
+}
+
+<div class="container">
+    <section>
+        <h1>@ViewData["Title"]</h1>
+        <form asp-action="ChangeCategory" asp-controller="Category" method="post">
+            <div class="form-group">
+                <label asp-for="Name">Category Name</label>
+                <input asp-for="Name" placeholder="Change category name" class="form-control" />
+            </div>
+            <input type="hidden" asp-for="CategoryId" />
+            <button class="btn-form" type="submit">Save</button>
+        </form>
+    </section>
+</div>

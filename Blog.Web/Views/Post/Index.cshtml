@@ -3,10 +3,11 @@
 @if(@Model.IsActive == true)
 {
     <div class="container">
-            <h1 class="card-title">@Model.Title</h1>
-            <p>@Model.Content</p>
-            <br />
-            <p>Created at: @Model.Created by: @Model.Author</p>
-            <a asp-action="Update" asp-controller="Post" asp-route-id="@Model.PostId">Edit</a>
+        <h1 class="card-title">@Model.Title</h1>
+        <p>@Model.Content</p>
+        <br />
+        <p>Created at: @Model.Created by: @Model.Author</p>
+        <a asp-action="Update" asp-controller="Post" asp-route-id="@Model.PostId">Edit</a>
+        <a asp-action="Remove" asp-controller="Post" asp-route-id="@Model.PostId">Remove</a>
     </div>
 }

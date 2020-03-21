@@ -82,7 +82,7 @@ namespace Blog.Web
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Post}/{action=Index}/{id?}");
+                    template: "{controller=Post}/{action=AllPosts}/{id?}");
             });
         }
     }

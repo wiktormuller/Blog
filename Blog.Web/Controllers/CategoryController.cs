@@ -41,5 +41,39 @@ namespace Blog.Web.Controllers
 
             return RedirectToAction("Index", "Category");
         }
+
+        [HttpGet]
+        public IActionResult Remove(int id)
+        {
+            _categoryService.Remove(id);
+
+            return RedirectToAction("Index", "Category");
+        }
+
+        [HttpGet]
+        public IActionResult Update(int id)
+        {
+            var post = _categoryService.Get(id);
+            var model = _mapper.Map<UpdateCategoryDto>(post);
+            if (model == null)
+            {
+                return NotFound();
+            }
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult ChangeCategory(UpdateCategoryDto updatedCategory)
+        {
+            var model = _mapper.Map<Category>(updatedCategory);
+            if (model == null)
+            {
+                return NotFound();
+            }
+            _categoryService.Update(model);
+
+            return RedirectToAction("Index", "Category");   //new { id = model.CategoryId } direct to post that are connected with that category
+        }
     }
 }

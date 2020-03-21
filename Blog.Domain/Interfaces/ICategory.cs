@@ -6,10 +6,10 @@ namespace Blog.Domain.Interfaces
 {
     public interface ICategory
     {
-        Post Get(int id);
+        Category Get(int id);
         IQueryable<Category> GetAll();
         void Add(Category category);
-        Task Update(Category category);
-        Task Remove(int id);
+        void Update(Category category);
+        void Remove(int id);
     }
 }

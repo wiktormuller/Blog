@@ -21,7 +21,7 @@ namespace Blog.Web.Controllers
         }
 
         //[HttpGet("[controller]/[action]")]    //WHY THIS DOES NOT WORK?
-        public IActionResult Index()
+        public IActionResult AllPosts()
         {
             var posts = _postService.GetAll();
             var model = _mapper.Map<IEnumerable<PostDto>>(posts);   //error mapping types
@@ -39,6 +39,16 @@ namespace Blog.Web.Controllers
         }
 
         [HttpGet]
+        public IActionResult RelatedToCategory(CategoryDto category)
+        {
+            var posts = _postService.GetRelatedPosts(category.CategoryId);
+
+            var model = _mapper.Map<IEnumerable<PostDto>>(posts);
+
+            return View("AllPosts", model);
+        }
+
+        [HttpGet]
         public IActionResult Create(CreatePostDto model)
         {
             return View(model);
@@ -51,6 +61,14 @@ namespace Blog.Web.Controllers
             _postService.Add(post);
 
             return RedirectToAction("Index", "Post");
+        }
+
+        [HttpGet]
+        public IActionResult Remove(int id)
+        {
+            _postService.Remove(id);
+
+            return RedirectToAction("Index", "Category");   //redirect to post index not category
         }
 
         [HttpGet]

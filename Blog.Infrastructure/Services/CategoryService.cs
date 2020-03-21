@@ -20,9 +20,10 @@ namespace Blog.Infrastructure.Services
             _context.SaveChanges();
         }
 
-        public Post Get(int id)
+        public Category Get(int id)
         {
-            throw new System.NotImplementedException();
+            var category = _context.Categories.Where(p => p.CategoryId == id).First();
+            return category;
         }
 
         public IQueryable<Category> GetAll()
@@ -31,14 +32,18 @@ namespace Blog.Infrastructure.Services
             return categories;
         }
 
-        public Task Remove(int id)
+        public void Remove(int id)
         {
-            throw new System.NotImplementedException();
+            var category = Get(id);
+            //category.IsActive = false;
+            _context.Categories.Remove(category);
+            _context.SaveChanges();
         }
 
-        public Task Update(Category category)
+        public void Update(Category category)
         {
-            throw new System.NotImplementedException();
+            _context.Categories.Update(category);
+            _context.SaveChanges();
         }
     }
 }

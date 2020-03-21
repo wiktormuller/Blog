@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<Blog.Infrastructure.DTO.CategoryDto>
 @{
-    ViewData["Title"] = "";
+    ViewData["Title"] = "Categories";
 }
 
 <div class="container">
@@ -12,7 +12,9 @@
         @foreach (var category in Model)
         {
             <div class="category-name">
-                <a href="#">@category.Name</a>
+                <a asp-action="RelatedToCategory" asp-controller="Post">@category.Name</a>
+                <a asp-action="Update" asp-controller="Category" asp-route-id="@category.CategoryId">Edit</a>
+                <a asp-action="Remove" asp-controller="Category" asp-route-id="@category.CategoryId">Remove</a>
             </div>
         }
     </section>

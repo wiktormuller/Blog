@@ -17,6 +17,8 @@ namespace Blog.Infrastructure.Mappers
             CreateMap<CreateCategoryDto, Category>();   //is it correct in post method?
             CreateMap<Post, UpdatePostDto>();
             CreateMap<UpdatePostDto, Post>();
+            CreateMap<UpdateCategoryDto, Category>();
+            CreateMap<Category, UpdateCategoryDto>();
         }
     }
 }

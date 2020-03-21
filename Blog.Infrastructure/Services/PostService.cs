@@ -28,6 +28,14 @@ namespace Blog.Infrastructure.Services
             return post;
         }
 
+        public IEnumerable<Post> GetRelatedPosts(int id)
+        {
+            var posts = _context.Posts
+                .Include(post => post.Categories);  //how to attach related posts?
+
+            return posts;
+        }
+
         public IEnumerable<Post> GetAll()
         {
             var posts = _context.Posts
@@ -43,6 +51,7 @@ namespace Blog.Infrastructure.Services
         public void Remove(int id)
         {
             var post = Get(id);
+            //post.IsActive = false;
             _context.Posts.Remove(post);
             _context.SaveChanges();
         }
