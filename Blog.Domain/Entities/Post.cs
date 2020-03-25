@@ -7,16 +7,6 @@ namespace Blog.Domain.Entities
     {
         private Post() { }
 
-        public Post(int postId, string title, string content, bool isActive, ApplicationUser author)
-        {
-            PostId = postId;
-            Title = title;
-            Content = content;
-            Created = DateTime.Now;
-            IsActive = isActive;
-            Author = author;
-        }
-
         public int PostId { get; private set; }
         public string Title { get; private set; }
         public string Content { get; private set; }

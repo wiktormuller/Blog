@@ -68,7 +68,7 @@ namespace Blog.Web.Controllers
         {
             _postService.Remove(id);
 
-            return RedirectToAction("Index", "Category");   //redirect to post index not category
+            return RedirectToAction("AllPosts", "Post");
         }
 
         [HttpGet]

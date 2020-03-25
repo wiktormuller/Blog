@@ -391,6 +391,13 @@ input.form-control
 	border: 1px solid #CED4DA;
 }
 
+textarea.form-control
+{
+	resize: none;
+	height: 300px;
+	overflow: scroll;
+}
+
 /*BUTTON IN FORM*/
 button.btn-form {
 	padding: 15px;

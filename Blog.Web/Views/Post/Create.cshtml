@@ -13,8 +13,12 @@
             </div>
             <div class="form-group">
                 <label asp-for="Content">Post Content</label>
-                <input asp-for="Content" placeholder="Write something interesting" class="form-control" />
+                <textarea asp-for="Content" placeholder="Write something interesting" class="form-control"></textarea>
             </div>
+            <!--<div class="form-group">
+                <label for="FileUpload_FormFile">File</label>
+                <input type="file">
+            </div>-->
             <div class="form-group">
                 <label asp-for="IsActive">Is that post active?</label>
                 <input type="checkbox" asp-for="IsActive" checked />
