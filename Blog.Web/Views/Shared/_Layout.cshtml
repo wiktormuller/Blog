@@ -45,9 +45,10 @@
             <partial name="_LoginPartial" />
         </ul>
         <div class="search-area">
-            <form class="search">
+            <form asp-controller="Post" asp-action="Search" method="post" class="search">
                 <button class="search-btn" type="submit"><i class="fas fa-search"></i></button>
-                <input class="search-input" type="text" placeholder="Type of search">
+                <input id="searchQuery" name="searchQuery" class="search-input" type="text" placeholder="Search...">
+                <!--With the name attribute in place, ASP.NET MVC spots the incoming “searchQuery” value (in the submitted form data) and binds it to the firstName parameter we specified in the Index (POST) method on our controller.-->
             </form>
         </div>
         <div class="menu-btn">

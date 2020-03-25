@@ -22,6 +22,8 @@ namespace Blog.Infrastructure
             builder.ApplyConfiguration(new CommentConfiguration());
             builder.ApplyConfiguration(new CategoryConfiguration());
 
+            builder.Entity<PostCategory>().HasKey(pc => new { pc.PostId, pc.CategoryId });
+
             //builder.Seed();
         }
 

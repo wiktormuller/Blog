@@ -25,7 +25,8 @@ namespace Blog.Domain.Entities
         
         public ApplicationUser Author { get; private set; }
         public PostImage Image { get; private set; }
-        public ICollection<Comment> Comments { get; private set; }
-        public ICollection<Category> Categories { get; private set; }
+        public IEnumerable<Comment> Comments { get; private set; }
+
+        public IEnumerable<PostCategory> PostCategories { get; private set; }
     }
 }

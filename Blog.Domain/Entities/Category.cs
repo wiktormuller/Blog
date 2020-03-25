@@ -8,5 +8,7 @@ namespace Blog.Domain.Entities
     {
         public int CategoryId { get; private set; }
         public string Name { get; private set; }
+
+        public IEnumerable<PostCategory> PostCategories { get; private set; }
     }
 }

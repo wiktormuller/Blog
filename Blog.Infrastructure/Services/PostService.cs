@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Blog.Domain.Entities;
 using Blog.Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Z.EntityFramework.Plus;
 
 namespace Blog.Infrastructure.Services
 {
@@ -28,12 +29,28 @@ namespace Blog.Infrastructure.Services
             return post;
         }
 
-        public IEnumerable<Post> GetRelatedPosts(int id)
+        public IEnumerable<Post> GetRelatedPosts(int id)    //??????????????????????????????? anonymous projection or zzz project with efcore plus
         {
-            var posts = _context.Posts
-                .Include(post => post.Categories);  //how to attach related posts?
+            var posts = _context.Posts;
+            //.IncludeFilter(x => x.PostCategories.Where(y => y.CategoryId == id));
 
             return posts;
+        }
+
+        public IEnumerable<Post> GetFilteredPosts(string searchQuery)
+        {
+            var query = searchQuery.ToLower();
+            var filteredPosts = _context.Posts
+                .Include(post => post.Author)
+                .Include(post => post.Comments)
+                .Include(post => post.PostCategories)
+                    .ThenInclude(postCategories => postCategories.Category)
+                .Include(post => post.Image)
+                .Where(post =>
+                    post.Title.ToLower().Contains(query)
+                 || post.Content.ToLower().Contains(query))
+                .OrderByDescending(post => post.Created);
+            return filteredPosts;
         }
 
         public IEnumerable<Post> GetAll()
@@ -41,8 +58,10 @@ namespace Blog.Infrastructure.Services
             var posts = _context.Posts
                 .Include(post => post.Author)
                 .Include(post => post.Comments)
-                .Include(post => post.Categories)
+                .Include(post => post.PostCategories)
+                    .ThenInclude(postCategories => postCategories.Category)
                 .Include(post => post.Image)
+                //.Include(post => post.Categories)
                 .OrderByDescending(post => post.Created);
 
             return posts;

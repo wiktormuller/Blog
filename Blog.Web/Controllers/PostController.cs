@@ -39,9 +39,9 @@ namespace Blog.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult RelatedToCategory(CategoryDto category)
+        public IActionResult RelatedPosts(int id)   //?????????????????
         {
-            var posts = _postService.GetRelatedPosts(category.CategoryId);
+            var posts = _postService.GetRelatedPosts(id);
 
             var model = _mapper.Map<IEnumerable<PostDto>>(posts);
 
@@ -95,6 +95,15 @@ namespace Blog.Web.Controllers
             _postService.Update(model);
 
             return RedirectToAction("Index", "Post", new { id = model.PostId }); 
+        }
+
+        [HttpPost]
+        public IActionResult Search(string searchQuery)
+        {
+            var filteredPosts = _postService.GetFilteredPosts(searchQuery);
+            var model = _mapper.Map<IEnumerable<PostDto>>(filteredPosts);
+
+            return View("AllPosts", model);
         }
 
         public IActionResult Privacy()  //DO NOT FORGET TO IMPLEMENT

@@ -10,6 +10,7 @@ namespace Blog.Domain.Interfaces
         Post Get(int id);
         IEnumerable<Post> GetAll();
         IEnumerable<Post> GetRelatedPosts(int id);
+        IEnumerable<Post> GetFilteredPosts(string searchQuery);
         void Add(Post post); //make it as a task
         void Update(Post post);
         void Remove(int id);
