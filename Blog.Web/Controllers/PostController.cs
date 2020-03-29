@@ -24,7 +24,7 @@ namespace Blog.Web.Controllers
         public IActionResult AllPosts()
         {
             var posts = _postService.GetAll();
-            var model = _mapper.Map<IEnumerable<PostDto>>(posts);   //error mapping types
+            var model = _mapper.Map<IEnumerable<PostDto>>(posts);   //error mapping types when ISS is turned off WHY?
             
             return View("AllPosts", model);
         }
@@ -43,9 +43,9 @@ namespace Blog.Web.Controllers
         {
             var posts = _postService.GetRelatedPosts(id);
 
-            var model = _mapper.Map<IEnumerable<PostDto>>(posts);
+            var model = _mapper.Map<IEnumerable<RelatedPostDto>>(posts);
 
-            return View("AllPosts", model);
+            return View("RelatedPosts", model);
         }
 
         [HttpGet]

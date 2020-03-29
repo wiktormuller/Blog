@@ -19,6 +19,7 @@ namespace Blog.Infrastructure.Mappers
             CreateMap<UpdatePostDto, Post>();
             CreateMap<UpdateCategoryDto, Category>();
             CreateMap<Category, UpdateCategoryDto>();
+            CreateMap<PostCategory, RelatedPostDto>();
         }
     }
 }

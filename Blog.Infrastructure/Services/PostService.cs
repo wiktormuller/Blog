@@ -29,10 +29,13 @@ namespace Blog.Infrastructure.Services
             return post;
         }
 
-        public IEnumerable<Post> GetRelatedPosts(int id)    //??????????????????????????????? anonymous projection or zzz project with efcore plus
+        public IEnumerable<PostCategory> GetRelatedPosts(int id)    //??????????????????????????????? anonymous projection or zzz project with efcore plus
         {
-            var posts = _context.Posts;
-            //.IncludeFilter(x => x.PostCategories.Where(y => y.CategoryId == id));
+            var posts = _context.PostCategories
+                .Include(p => p.Post)
+                .Include(c => c.Category)
+                .Where(x => x.CategoryId == id)
+                .ToList();
 
             return posts;
         }
@@ -56,11 +59,11 @@ namespace Blog.Infrastructure.Services
         public IEnumerable<Post> GetAll()
         {
             var posts = _context.Posts
-                .Include(post => post.Author)
-                .Include(post => post.Comments)
-                .Include(post => post.PostCategories)
-                    .ThenInclude(postCategories => postCategories.Category)
-                .Include(post => post.Image)
+                //.Include(post => post.Author)
+                //.Include(post => post.Comments)
+                //.Include(post => post.PostCategories)
+                //    .ThenInclude(postCategories => postCategories.Category)
+                //.Include(post => post.Image)
                 //.Include(post => post.Categories)
                 .OrderByDescending(post => post.Created);
 
