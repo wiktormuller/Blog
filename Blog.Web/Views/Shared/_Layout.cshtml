@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
-    <title>@ViewData["Title"] - Blog</title>
+    <title>@ViewData["Title"]Blog</title>
 
     <!--<environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -36,12 +36,15 @@
             <li>
                 <a asp-controller="Category" asp-action="Index">Categories</a>
             </li>
-            <li>
-                <a asp-controller="Post" asp-action="Create">Create Post</a>
-            </li>
-            <li>
-                <a asp-controller="Category" asp-action="Create">Create Category</a>
-            </li>
+            @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+            {
+                <li>
+                    <a asp-controller="Post" asp-action="Create">Create Post</a>
+                </li>
+                <li>
+                    <a asp-controller="Category" asp-action="Create">Create Category</a>
+                </li>
+            }
             <partial name="_LoginPartial" />
         </ul>
         <div class="search-area">

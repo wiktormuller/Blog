@@ -13,8 +13,8 @@ namespace Blog.Infrastructure.Mappers
             CreateMap<Post, PostDetailsDto>();
             CreateMap<Category, CategoryDto>();
             CreateMap<ApplicationUser, ProfileDto>();
-            CreateMap<CreatePostDto, Post>();   //is it correct in post method?
-            CreateMap<CreateCategoryDto, Category>();   //is it correct in post method?
+            CreateMap<CreatePostDto, Post>();
+            CreateMap<CreateCategoryDto, Category>();
             CreateMap<Post, UpdatePostDto>();
             CreateMap<UpdatePostDto, Post>();
             CreateMap<UpdateCategoryDto, Category>();
