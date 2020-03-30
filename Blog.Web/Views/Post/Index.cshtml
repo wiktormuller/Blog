@@ -1,13 +1,22 @@
 ﻿@model Blog.Infrastructure.DTO.PostDetailsDto
 
-@if(@Model.IsActive == true)
+@using  Microsoft.AspNetCore.Identity
+@using  Blog.Domain.Entities
+
+@inject UserManager<ApplicationUser> UserManager
+@inject SignInManager<ApplicationUser> SignInManager
+
+@if (@Model.IsActive == true)
 {
     <div class="container">
         <h1 class="card-title">@Model.Title</h1>
         <p>@Model.Content</p>
         <br />
         <p>Created at: @Model.Created by: @Model.Author</p>
-        <a asp-action="Update" asp-controller="Post" asp-route-id="@Model.PostId">Edit</a>
-        <a asp-action="Remove" asp-controller="Post" asp-route-id="@Model.PostId">Remove</a>
+        @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+        {
+            <a asp-action="Update" asp-controller="Post" asp-route-id="@Model.PostId">Edit</a>
+            <a asp-action="Remove" asp-controller="Post" asp-route-id="@Model.PostId">Remove</a>
+        }
     </div>
 }

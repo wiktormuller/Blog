@@ -3,6 +3,7 @@ using AutoMapper;
 using Blog.Domain.Entities;
 using Blog.Domain.Interfaces;
 using Blog.Infrastructure.DTO;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Blog.Web.Controllers
@@ -28,12 +29,14 @@ namespace Blog.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public IActionResult Create(CreateCategoryDto model)
         {
             return View(model);
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public IActionResult AddCategory(CreateCategoryDto model)
         {
             var category = _mapper.Map<Category>(model);    //is it correct?
@@ -43,6 +46,7 @@ namespace Blog.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public IActionResult Remove(int id)
         {
             _categoryService.Remove(id);
@@ -51,6 +55,7 @@ namespace Blog.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public IActionResult Update(int id)
         {
             var post = _categoryService.Get(id);
@@ -64,6 +69,7 @@ namespace Blog.Web.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public IActionResult ChangeCategory(UpdateCategoryDto updatedCategory)
         {
             var model = _mapper.Map<Category>(updatedCategory);

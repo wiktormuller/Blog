@@ -5,6 +5,7 @@ using Blog.Domain.Entities;
 using Blog.Domain.Interfaces;
 using Blog.Infrastructure.DTO;
 using Blog.Web.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Blog.Web.Controllers
@@ -39,7 +40,7 @@ namespace Blog.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult RelatedPosts(int id)   //?????????????????
+        public IActionResult RelatedPosts(int id)
         {
             var posts = _postService.GetRelatedPosts(id);
 
@@ -49,12 +50,14 @@ namespace Blog.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public IActionResult Create(CreatePostDto model)
         {
             return View(model);
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public IActionResult AddPost(CreatePostDto model)
         {
             var post = _mapper.Map<Post>(model);    //is it correct?
@@ -64,6 +67,7 @@ namespace Blog.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public IActionResult Remove(int id)
         {
             _postService.Remove(id);
@@ -72,6 +76,7 @@ namespace Blog.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public IActionResult Update(int id)
         {
             var post = _postService.Get(id);
@@ -85,6 +90,7 @@ namespace Blog.Web.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public IActionResult ChangePost(UpdatePostDto updatedPost)
         {
             var model = _mapper.Map<Post>(updatedPost);

@@ -1,0 +1,21 @@
+﻿@model IEnumerable<Blog.Infrastructure.DTO.ProfileDto>
+
+<div class="container">
+    <table>
+        <thead>
+            <tr>
+                <th>User Name</th>
+                <th>Created At</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var profile in Model)
+            {
+                <tr>
+                    <td>@profile.UserName</td>
+                    <td>@profile.Created</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
