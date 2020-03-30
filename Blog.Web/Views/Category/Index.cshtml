@@ -2,19 +2,28 @@
 @{
     ViewData["Title"] = "Categories";
 }
+@using  Microsoft.AspNetCore.Identity
+@using  Blog.Domain.Entities
+
+@inject UserManager<ApplicationUser> UserManager
+@inject SignInManager<ApplicationUser> SignInManager
 
 <div class="container">
     <h1>List of categories</h1>
     <section>
-        <h4>Category name:
+        <h4>
+            Category name:
         </h4>
         <hr />
         @foreach (var category in Model)
         {
             <div class="category-name">
                 <a asp-action="RelatedPosts" asp-controller="Post" asp-route-id="@category.CategoryId">@category.Name</a>
-                <a asp-action="Update" asp-controller="Category" asp-route-id="@category.CategoryId">Edit</a>
-                <a asp-action="Remove" asp-controller="Category" asp-route-id="@category.CategoryId">Remove</a>
+                @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                {
+                    <a asp-action="Update" asp-controller="Category" asp-route-id="@category.CategoryId">Edit</a>
+                    <a asp-action="Remove" asp-controller="Category" asp-route-id="@category.CategoryId">Remove</a>
+                }
             </div>
         }
     </section>

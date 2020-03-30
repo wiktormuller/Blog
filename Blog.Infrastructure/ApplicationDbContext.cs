@@ -22,7 +22,7 @@ namespace Blog.Infrastructure
             builder.ApplyConfiguration(new CommentConfiguration());
             builder.ApplyConfiguration(new CategoryConfiguration());
 
-            builder.Entity<PostCategory>().HasKey(pc => new { pc.PostId, pc.CategoryId });
+            builder.Entity<PostCategory>().HasKey(pc => new { pc.PostId, pc.CategoryId });  //primary key for post category entity
 
             //builder.Seed();
         }
