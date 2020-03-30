@@ -2,6 +2,7 @@
 using AutoMapper;
 using Blog.Domain.Interfaces;
 using Blog.Infrastructure.DTO;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Blog.Web.Controllers
@@ -17,15 +18,16 @@ namespace Blog.Web.Controllers
             _mapper = mapper;
         }
 
+        [Authorize(Roles = "Admin")]
         public IActionResult Index()
         {
             var profiles = _applicationUser.GetAll();
             var model = _mapper.Map<IEnumerable<ProfileDto>>(profiles);
 
-            return View(model);
+            return View("AllUsers", model);
         }
 
-        public IActionResult Login()
+        public IActionResult Login()    //WHY?
         {
             return View("_LoginPartial");
         }
