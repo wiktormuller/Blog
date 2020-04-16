@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using AutoMapper;
 using Blog.Domain.Entities;
 using Blog.Domain.Interfaces;
@@ -106,7 +107,17 @@ namespace Blog.Web.Controllers
         [HttpPost]
         public IActionResult Search(string searchQuery)
         {
+            if (string.IsNullOrEmpty(searchQuery))
+            {
+                return RedirectToAction("AllPosts", "Post");
+            }
+
             var filteredPosts = _postService.GetFilteredPosts(searchQuery);
+            if (!filteredPosts.Any())
+            {
+                return View("AllPosts", null);
+            }
+
             var model = _mapper.Map<IEnumerable<PostDto>>(filteredPosts);
 
             return View("AllPosts", model);

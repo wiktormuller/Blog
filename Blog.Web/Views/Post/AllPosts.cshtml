@@ -7,8 +7,13 @@
 
 <header class="picture"></header>
 <div class="container">
-    <section class="home-cards">
-
+    @if (@Model == null)
+    {
+        <h3>There is no post like this.</h3>
+    }
+    else
+    {
+        <section class="home-cards">
         @foreach (var post in Model)
         {
             <div class="single-card">
@@ -29,6 +34,7 @@
                 </ul>
             </div>
         }
-    </section>
-    <a href="#" class="load-more">LOAD MORE</a>
+        </section>        
+        <a href="#" class="load-more">LOAD MORE</a>
+    }
 </div>
